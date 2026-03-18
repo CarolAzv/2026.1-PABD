@@ -1,0 +1,790 @@
+--
+-- PostgreSQL database cluster dump
+--
+
+-- Started on 2026-03-18 15:46:28
+
+\restrict PhTsjeHrAr9WeSywWBp1b2QSokWfPG1qRMSC1Sg1QHnBMLhS7lJcPlMFBJ4QOaY
+
+SET default_transaction_read_only = off;
+
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+
+--
+-- Roles
+--
+
+CREATE ROLE postgres;
+ALTER ROLE postgres WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS PASSWORD 'SCRAM-SHA-256$4096:HDSSsTV9rXCSs/unkLlniw==$epI0XOEpFVtUvBzIZ9KfZNepCBBxhguiaJPpYiiNXjc=:lDfdU+gm+xxeGX8QGXGn0eYfnTCri1ibW0t2TXlX6Os=';
+
+--
+-- User Configurations
+--
+
+
+
+
+
+
+
+
+\unrestrict PhTsjeHrAr9WeSywWBp1b2QSokWfPG1qRMSC1Sg1QHnBMLhS7lJcPlMFBJ4QOaY
+
+--
+-- Databases
+--
+
+--
+-- Database "template1" dump
+--
+
+\connect template1
+
+--
+-- PostgreSQL database dump
+--
+
+\restrict 9GqpVGqsqkEP6pgHEwt1G7a1CQj5gyEZIGaRirVOwPQpBkJELARR3CaWujVUVDS
+
+-- Dumped from database version 18.1
+-- Dumped by pg_dump version 18.1
+
+-- Started on 2026-03-18 15:46:28
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+-- Completed on 2026-03-18 15:46:28
+
+--
+-- PostgreSQL database dump complete
+--
+
+\unrestrict 9GqpVGqsqkEP6pgHEwt1G7a1CQj5gyEZIGaRirVOwPQpBkJELARR3CaWujVUVDS
+
+--
+-- Database "amazom" dump
+--
+
+--
+-- PostgreSQL database dump
+--
+
+\restrict ux8o6ilNMeb0y65lROeBowenUQRCYvi1KeBorM7Sj8tsOPkDOU7NeOeUlQ9If2F
+
+-- Dumped from database version 18.1
+-- Dumped by pg_dump version 18.1
+
+-- Started on 2026-03-18 15:46:28
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 5080 (class 1262 OID 16384)
+-- Name: amazom; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE amazom WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'Portuguese_Brazil.1252';
+
+
+ALTER DATABASE amazom OWNER TO postgres;
+
+\unrestrict ux8o6ilNMeb0y65lROeBowenUQRCYvi1KeBorM7Sj8tsOPkDOU7NeOeUlQ9If2F
+\connect amazom
+\restrict ux8o6ilNMeb0y65lROeBowenUQRCYvi1KeBorM7Sj8tsOPkDOU7NeOeUlQ9If2F
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 220 (class 1259 OID 16387)
+-- Name: cliente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cliente (
+    id integer NOT NULL,
+    nome character varying(100) NOT NULL,
+    cpf character varying(11) NOT NULL,
+    telefone character varying(15),
+    email character varying(100)
+);
+
+
+ALTER TABLE public.cliente OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 16386)
+-- Name: cliente_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.cliente_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.cliente_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5081 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: cliente_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.cliente_id_seq OWNED BY public.cliente.id;
+
+
+--
+-- TOC entry 222 (class 1259 OID 16455)
+-- Name: endereco; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.endereco (
+    id integer NOT NULL,
+    rua character varying(255) NOT NULL,
+    cidade character varying(100) NOT NULL,
+    estado character varying(50) NOT NULL,
+    cep character varying(10) NOT NULL
+);
+
+
+ALTER TABLE public.endereco OWNER TO postgres;
+
+--
+-- TOC entry 221 (class 1259 OID 16454)
+-- Name: endereco_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.endereco_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.endereco_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5082 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: endereco_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.endereco_id_seq OWNED BY public.endereco.id;
+
+
+--
+-- TOC entry 224 (class 1259 OID 16467)
+-- Name: forma_pagamento; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.forma_pagamento (
+    id integer NOT NULL,
+    tipo character varying(50) NOT NULL,
+    status character varying(50) NOT NULL,
+    data_pagamento date NOT NULL
+);
+
+
+ALTER TABLE public.forma_pagamento OWNER TO postgres;
+
+--
+-- TOC entry 223 (class 1259 OID 16466)
+-- Name: forma_pagamento_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.forma_pagamento_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.forma_pagamento_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5083 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: forma_pagamento_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.forma_pagamento_id_seq OWNED BY public.forma_pagamento.id;
+
+
+--
+-- TOC entry 228 (class 1259 OID 16487)
+-- Name: item; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.item (
+    id integer NOT NULL,
+    nome character varying(100) NOT NULL,
+    preco numeric(10,2) NOT NULL,
+    descricao text,
+    categoria character varying(50),
+    quantidade_estoque integer NOT NULL
+);
+
+
+ALTER TABLE public.item OWNER TO postgres;
+
+--
+-- TOC entry 227 (class 1259 OID 16486)
+-- Name: item_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.item_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.item_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5084 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: item_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.item_id_seq OWNED BY public.item.id;
+
+
+--
+-- TOC entry 232 (class 1259 OID 16526)
+-- Name: item_pedido; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.item_pedido (
+    item_pedido_id integer NOT NULL,
+    pedido_id integer,
+    item_id integer,
+    quantidade integer NOT NULL
+);
+
+
+ALTER TABLE public.item_pedido OWNER TO postgres;
+
+--
+-- TOC entry 231 (class 1259 OID 16525)
+-- Name: item_pedido_item_pedido_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.item_pedido_item_pedido_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.item_pedido_item_pedido_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5085 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: item_pedido_item_pedido_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.item_pedido_item_pedido_id_seq OWNED BY public.item_pedido.item_pedido_id;
+
+
+--
+-- TOC entry 230 (class 1259 OID 16500)
+-- Name: pedido; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.pedido (
+    id integer NOT NULL,
+    cliente_id integer,
+    endereco_id integer,
+    forma_pagamento_id integer,
+    data date NOT NULL,
+    valor_total numeric(10,2) NOT NULL,
+    status character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.pedido OWNER TO postgres;
+
+--
+-- TOC entry 229 (class 1259 OID 16499)
+-- Name: pedido_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.pedido_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.pedido_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5086 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: pedido_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.pedido_id_seq OWNED BY public.pedido.id;
+
+
+--
+-- TOC entry 226 (class 1259 OID 16478)
+-- Name: vendedor; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.vendedor (
+    id integer NOT NULL,
+    nome character varying(100) NOT NULL,
+    endereco character varying(255),
+    telefone character varying(15)
+);
+
+
+ALTER TABLE public.vendedor OWNER TO postgres;
+
+--
+-- TOC entry 225 (class 1259 OID 16477)
+-- Name: vendedor_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.vendedor_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.vendedor_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 5087 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: vendedor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.vendedor_id_seq OWNED BY public.vendedor.id;
+
+
+--
+-- TOC entry 4886 (class 2604 OID 16390)
+-- Name: cliente id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente ALTER COLUMN id SET DEFAULT nextval('public.cliente_id_seq'::regclass);
+
+
+--
+-- TOC entry 4887 (class 2604 OID 16458)
+-- Name: endereco id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.endereco ALTER COLUMN id SET DEFAULT nextval('public.endereco_id_seq'::regclass);
+
+
+--
+-- TOC entry 4888 (class 2604 OID 16470)
+-- Name: forma_pagamento id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.forma_pagamento ALTER COLUMN id SET DEFAULT nextval('public.forma_pagamento_id_seq'::regclass);
+
+
+--
+-- TOC entry 4890 (class 2604 OID 16490)
+-- Name: item id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.item ALTER COLUMN id SET DEFAULT nextval('public.item_id_seq'::regclass);
+
+
+--
+-- TOC entry 4892 (class 2604 OID 16529)
+-- Name: item_pedido item_pedido_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.item_pedido ALTER COLUMN item_pedido_id SET DEFAULT nextval('public.item_pedido_item_pedido_id_seq'::regclass);
+
+
+--
+-- TOC entry 4891 (class 2604 OID 16503)
+-- Name: pedido id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pedido ALTER COLUMN id SET DEFAULT nextval('public.pedido_id_seq'::regclass);
+
+
+--
+-- TOC entry 4889 (class 2604 OID 16481)
+-- Name: vendedor id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.vendedor ALTER COLUMN id SET DEFAULT nextval('public.vendedor_id_seq'::regclass);
+
+
+--
+-- TOC entry 5062 (class 0 OID 16387)
+-- Dependencies: 220
+-- Data for Name: cliente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.cliente (id, nome, cpf, telefone, email) FROM stdin;
+1	Karlos	70870870878	78787080	Karlitos@gmail.com
+2	Maria da Luz	43543543543	43434343	luzmaria@gmail.com
+3	Jesus	12112112121	12121212	jesusfilho@gmail.com
+\.
+
+
+--
+-- TOC entry 5064 (class 0 OID 16455)
+-- Dependencies: 222
+-- Data for Name: endereco; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.endereco (id, rua, cidade, estado, cep) FROM stdin;
+1	1	Jardim do Sérido	RN	1889
+2	10293	Maria da Ponta	RN	59
+3	22	Mãe d'gua	RN	3
+\.
+
+
+--
+-- TOC entry 5066 (class 0 OID 16467)
+-- Dependencies: 224
+-- Data for Name: forma_pagamento; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.forma_pagamento (id, tipo, status, data_pagamento) FROM stdin;
+2	Físico	Em progresso	2026-03-18
+3	Debito	Completo	2026-03-08
+4	Credito	Completo	2026-01-17
+\.
+
+
+--
+-- TOC entry 5070 (class 0 OID 16487)
+-- Dependencies: 228
+-- Data for Name: item; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.item (id, nome, preco, descricao, categoria, quantidade_estoque) FROM stdin;
+1	Sorvete 3L Morango e Baumilha pack	87.99	2 caixas de 3L de sorvete, uma sabor morango e uma sabor baumilha	Comida	45
+2	Bateria	2.50	Bateria padrão	Equipamento	230
+3	Pelucia Urso Roxo Premium	40.00	Pelucia urso em cor roxo com tecido peludo e preenchimento de algodão	Brinquedo	54
+\.
+
+
+--
+-- TOC entry 5074 (class 0 OID 16526)
+-- Dependencies: 232
+-- Data for Name: item_pedido; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.item_pedido (item_pedido_id, pedido_id, item_id, quantidade) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5072 (class 0 OID 16500)
+-- Dependencies: 230
+-- Data for Name: pedido; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.pedido (id, cliente_id, endereco_id, forma_pagamento_id, data, valor_total, status) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5068 (class 0 OID 16478)
+-- Dependencies: 226
+-- Data for Name: vendedor; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.vendedor (id, nome, endereco, telefone) FROM stdin;
+1	Rodrigo	RN - Mãe'dgua - Arvore dos Amantes - rua do doutor - 45	98899889
+2	Carmim	Jardim do Sérido - Rua do Padeiro - 244	12123434
+3	Gustavo	Rua 33 Bosque das Piranhas	11112222
+\.
+
+
+--
+-- TOC entry 5088 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: cliente_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.cliente_id_seq', 3, true);
+
+
+--
+-- TOC entry 5089 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: endereco_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.endereco_id_seq', 3, true);
+
+
+--
+-- TOC entry 5090 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: forma_pagamento_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.forma_pagamento_id_seq', 4, true);
+
+
+--
+-- TOC entry 5091 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: item_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.item_id_seq', 3, true);
+
+
+--
+-- TOC entry 5092 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: item_pedido_item_pedido_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.item_pedido_item_pedido_id_seq', 1, false);
+
+
+--
+-- TOC entry 5093 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: pedido_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.pedido_id_seq', 1, false);
+
+
+--
+-- TOC entry 5094 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: vendedor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.vendedor_id_seq', 3, true);
+
+
+--
+-- TOC entry 4894 (class 2606 OID 16397)
+-- Name: cliente cliente_cpf_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente
+    ADD CONSTRAINT cliente_cpf_key UNIQUE (cpf);
+
+
+--
+-- TOC entry 4896 (class 2606 OID 16395)
+-- Name: cliente cliente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cliente
+    ADD CONSTRAINT cliente_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4898 (class 2606 OID 16465)
+-- Name: endereco endereco_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.endereco
+    ADD CONSTRAINT endereco_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4900 (class 2606 OID 16476)
+-- Name: forma_pagamento forma_pagamento_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.forma_pagamento
+    ADD CONSTRAINT forma_pagamento_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4908 (class 2606 OID 16533)
+-- Name: item_pedido item_pedido_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.item_pedido
+    ADD CONSTRAINT item_pedido_pkey PRIMARY KEY (item_pedido_id);
+
+
+--
+-- TOC entry 4904 (class 2606 OID 16498)
+-- Name: item item_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.item
+    ADD CONSTRAINT item_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4906 (class 2606 OID 16509)
+-- Name: pedido pedido_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pedido
+    ADD CONSTRAINT pedido_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4902 (class 2606 OID 16485)
+-- Name: vendedor vendedor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.vendedor
+    ADD CONSTRAINT vendedor_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4912 (class 2606 OID 16539)
+-- Name: item_pedido item_pedido_item_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.item_pedido
+    ADD CONSTRAINT item_pedido_item_id_fkey FOREIGN KEY (item_id) REFERENCES public.item(id);
+
+
+--
+-- TOC entry 4913 (class 2606 OID 16534)
+-- Name: item_pedido item_pedido_pedido_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.item_pedido
+    ADD CONSTRAINT item_pedido_pedido_id_fkey FOREIGN KEY (pedido_id) REFERENCES public.pedido(id);
+
+
+--
+-- TOC entry 4909 (class 2606 OID 16510)
+-- Name: pedido pedido_cliente_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pedido
+    ADD CONSTRAINT pedido_cliente_id_fkey FOREIGN KEY (cliente_id) REFERENCES public.cliente(id);
+
+
+--
+-- TOC entry 4910 (class 2606 OID 16515)
+-- Name: pedido pedido_endereco_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pedido
+    ADD CONSTRAINT pedido_endereco_id_fkey FOREIGN KEY (endereco_id) REFERENCES public.endereco(id);
+
+
+--
+-- TOC entry 4911 (class 2606 OID 16520)
+-- Name: pedido pedido_forma_pagamento_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.pedido
+    ADD CONSTRAINT pedido_forma_pagamento_id_fkey FOREIGN KEY (forma_pagamento_id) REFERENCES public.forma_pagamento(id);
+
+
+-- Completed on 2026-03-18 15:46:28
+
+--
+-- PostgreSQL database dump complete
+--
+
+\unrestrict ux8o6ilNMeb0y65lROeBowenUQRCYvi1KeBorM7Sj8tsOPkDOU7NeOeUlQ9If2F
+
+--
+-- Database "postgres" dump
+--
+
+\connect postgres
+
+--
+-- PostgreSQL database dump
+--
+
+\restrict UihBgp3wyk0NTHknHjmjOkSSVrWj8O4e35GNuhIOPHFF6VJZkZktNMuz0TLHg3i
+
+-- Dumped from database version 18.1
+-- Dumped by pg_dump version 18.1
+
+-- Started on 2026-03-18 15:46:29
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+-- Completed on 2026-03-18 15:46:29
+
+--
+-- PostgreSQL database dump complete
+--
+
+\unrestrict UihBgp3wyk0NTHknHjmjOkSSVrWj8O4e35GNuhIOPHFF6VJZkZktNMuz0TLHg3i
+
+-- Completed on 2026-03-18 15:46:29
+
+--
+-- PostgreSQL database cluster dump complete
+--
+
