@@ -5,11 +5,17 @@ class Grupo(models.Model):
     nome = models.CharField(max_length=1)
     descricao = models.TextField(blank=True)
 
+    def __str__(self):
+        return f"Grupo {self.nome} - {self.descricao}"
+
 
 class Tecnico(models.Model):
     nome = models.CharField(max_length=150)
     nacionalidade = models.CharField(max_length=100)
     data_nascimento = models.DateField()
+
+    def __str__(self):
+        return self.nome
 
 
 class Selecao(models.Model):
@@ -26,9 +32,12 @@ class Selecao(models.Model):
     tecnico = models.OneToOneField(Tecnico, on_delete=SET_NULL, null=True, related_name='selecao')
     escudo_url = models.URLField(blank=True)
 
+    def __str__(self):
+        return f"{self.nome} - {self.grupo.nome}"
+
 
 class Jogador(models.Model):
-    posicao_escola = [
+    posicao_escolha = [
         ("goleiro", "Goleiro"), ("zagueiro", "Zagueiro"), ("lateral", "Lateral"), 
         ("volante", "Volante"), ("meia", "Meia"), ("atacante", "Atacante"), 
     ]
@@ -36,10 +45,13 @@ class Jogador(models.Model):
     nome = models.CharField(max_length=150)
     nome_guerra = models.CharField(max_length=50)
     selecao = models.ForeignKey(Selecao, on_delete=PROTECT, related_name='jogadores')
-    posicao = models.CharField(max_length=10, choices=posicao_escola)
+    posicao = models.CharField(max_length=10, choices=posicao_escolha)
     numero_camisa = models.PositiveSmallIntegerField()
     data_nascimento  = models.DateField()
     suspenso = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.nome} - {self.selecao.nome}"
 
 class Jogo(models.Model):
     fase_escolha = [
@@ -60,7 +72,10 @@ class Jogo(models.Model):
     cidade = models.CharField(max_length=100, blank=True)
     gols_mandante = models.PositiveSmallIntegerField(default=0)
     gols_visitante = models.PositiveSmallIntegerField(default=0)
-    status = models.CharField(max_length=15, choices=status_escolha)
+    status = models.CharField(max_length=15, choices=status_escolha, default="agendado")
+
+    def __str__(self):
+        return f"{self.selecao_mandante} x {self.selecao_visitante} - {self.fase}"
 
 
 class EventoJogo(models.Model):
@@ -74,3 +89,6 @@ class EventoJogo(models.Model):
     tipo = models.CharField(max_length=20, choices=tipo_escolha)
     minuto = models.PositiveSmallIntegerField()
     acrescimo = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.tipo} - {self.minuto}' - {self.jogador.nome}"
