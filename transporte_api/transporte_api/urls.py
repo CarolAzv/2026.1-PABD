@@ -1,5 +1,5 @@
 """
-URL configuration for ticket project.
+URL configuration for transporte_api project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.0/topics/http/urls/
