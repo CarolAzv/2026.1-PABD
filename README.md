@@ -21,8 +21,8 @@ pip freeze > requirements.txt
 ## 4. Criar o projeto principal chamado 'amazon'
 django-admin startproject amazon
 
-# Entrar na pasta do projeto
-cd amazon
+* #Entrar na pasta do projeto
+* cd amazon
 
-# Criar o aplicativo de backend
-python manage.py startapp backend
+* #Criar o aplicativo de backend
+* python manage.py startapp backend
