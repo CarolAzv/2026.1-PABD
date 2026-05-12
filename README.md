@@ -9,11 +9,11 @@ source env/bin/activate
 env\Scripts\activate
 
 ## 2. Instalar as dependências do projeto
-pip install django # Framework web principal
-pip install djangorestframework # Biblioteca para construção de APIs REST
-pip install psycopg2-binary # Driver de conexão com o PostgreSQL
-pip install markdown # Suporte a markdown na interface do DRF
-pip install django-filter # Filtros avançados nas consultas da API
+* pip install django # Framework web principal
+* pip install djangorestframework # Biblioteca para construção de APIs REST
+* pip install psycopg2-binary # Driver de conexão com o PostgreSQL
+* pip install markdown # Suporte a markdown na interface do DRF
+* pip install django-filter # Filtros avançados nas consultas da API
 
 ## 3. Salvar as dependências em requirements.txt
 pip freeze > requirements.txt
